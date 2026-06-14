@@ -1,0 +1,124 @@
+{
+  "selected_validation_candidate": "blend_player_scorer__lightgbm_player_scorer",
+  "base_feature_count": 114,
+  "player_scorer_feature_count": 27,
+  "candidate_feature_count": 141,
+  "blend_weights": {
+    "blend_player_scorer__hist_gbm_player_scorer": [
+      0.695289085948449,
+      0.30471091405155104
+    ],
+    "blend_player_scorer__lightgbm_player_scorer": [
+      0.6477678368256808,
+      0.35223216317431916
+    ]
+  },
+  "validation_metrics": [
+    {
+      "model": "blend_player_scorer__lightgbm_player_scorer",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.866168189941611,
+      "brier": 0.50902321162243,
+      "rps": 0.16835618056508578,
+      "accuracy": 0.6054370398338682,
+      "calibration_error": 0.010963736673231935,
+      "sharpness": 0.606744183719382,
+      "n_matches": 5297,
+      "kind": "blend"
+    },
+    {
+      "model": "blend_player_scorer__hist_gbm_player_scorer",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.867258541198617,
+      "brier": 0.5096576412064487,
+      "rps": 0.16854460469935925,
+      "accuracy": 0.6044931093071549,
+      "calibration_error": 0.011465745950261065,
+      "sharpness": 0.6096401649609782,
+      "n_matches": 5297,
+      "kind": "blend"
+    },
+    {
+      "model": "logistic_fifa_baseline",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.8691629711985045,
+      "brier": 0.5107196376810463,
+      "rps": 0.16903001199437956,
+      "accuracy": 0.6084576175193506,
+      "calibration_error": 0.017997713516499297,
+      "sharpness": 0.615107485626031,
+      "n_matches": 5297,
+      "kind": "single"
+    },
+    {
+      "model": "logistic_player_scorer",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.8692678390402483,
+      "brier": 0.5109506455083667,
+      "rps": 0.16907832684200544,
+      "accuracy": 0.6043043232018124,
+      "calibration_error": 0.016142564159637704,
+      "sharpness": 0.6177601023351393,
+      "n_matches": 5297,
+      "kind": "single"
+    },
+    {
+      "model": "lightgbm_player_scorer",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.8750473067932092,
+      "brier": 0.5142857984694237,
+      "rps": 0.1708363570437929,
+      "accuracy": 0.5984519539361903,
+      "calibration_error": 0.015109444862835006,
+      "sharpness": 0.5933383747519037,
+      "n_matches": 5297,
+      "kind": "single"
+    },
+    {
+      "model": "hist_gbm_player_scorer",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.876286700813269,
+      "brier": 0.5148736397678875,
+      "rps": 0.17082017775587158,
+      "accuracy": 0.5976968095148197,
+      "calibration_error": 0.012414691900656279,
+      "sharpness": 0.597318732495444,
+      "n_matches": 5297,
+      "kind": "single"
+    }
+  ],
+  "holdout_opened": true,
+  "promotion_rule": "Do not promote unless validation improves the current champion and final holdout checks also pass.",
+  "holdout_was_previously_observed_for_repository": true,
+  "holdout_metrics": [
+    {
+      "model": "blend_player_scorer__lightgbm_player_scorer",
+      "split": "holdout_2025_2026",
+      "log_loss": 0.8169072750025923,
+      "brier": 0.47979948300374103,
+      "rps": 0.15678081541608174,
+      "accuracy": 0.6200305810397554,
+      "calibration_error": 0.023586987556760856,
+      "sharpness": 0.6046054648900495,
+      "n_matches": 1308
+    }
+  ],
+  "current_champion_holdout": {
+    "model": "logistic_fifa_hist_gbm_blend",
+    "split": "holdout_2025_2026",
+    "log_loss": 0.8152702677044296,
+    "brier": 0.4787355939805928,
+    "rps": 0.156307590202795,
+    "accuracy": 0.6192660550458715,
+    "calibration_error": 0.0253744661733672,
+    "sharpness": 0.6092449848924826,
+    "n_matches": 1308
+  },
+  "validation_improvement_vs_current_champion": 0.0010966246122677795,
+  "materially_better_than_current_champion": false,
+  "holdout_brier_rps_not_worse": true,
+  "promoted_to_core_champion": false,
+  "decision": "Kept as optional candidate; current core champion remains simpler",
+  "model_path": "models\\world_cup_2026_player_scorer.joblib",
+  "model_sha256": "c8010464b516654c9b9a0f8b7b840a7ae283e051ea5effc1addae25cef908549"
+}

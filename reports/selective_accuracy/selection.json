@@ -1,0 +1,25 @@
+{
+  "policy": "high_confidence_hard_pick_with_abstention",
+  "threshold": 0.5,
+  "target_accuracy": 0.65,
+  "selection_data": "rolling validation only",
+  "probabilities_unchanged": true,
+  "validation": {
+    "threshold": 0.5,
+    "coverage": 0.6601850103832358,
+    "selective_accuracy": 0.6954532456391193,
+    "full_accuracy": 0.6067585425712667,
+    "selected_matches": 3497,
+    "total_matches": 5297
+  },
+  "holdout": {
+    "threshold": 0.5,
+    "coverage": 0.6559633027522935,
+    "selective_accuracy": 0.7319347319347319,
+    "full_accuracy": 0.6192660550458715,
+    "selected_matches": 858,
+    "total_matches": 1308
+  },
+  "minimum_validation_year_accuracy": 0.6506849315068494,
+  "notes": "Accuracy is measured only on selected high-confidence matches. All matches still receive calibrated probabilities."
+}

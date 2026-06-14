@@ -1,0 +1,45 @@
+sources:
+  kaggle_international_results:
+    type: manual_or_kaggle_api
+    purpose: historical_national_team_results
+    required_for: v1
+    raw_dir: data/raw/kaggle_international_results
+    canonical_repository: https://github.com/martj42/international_results
+    version_policy: required_commit_sha
+    checksum_policy: required_sha256
+  world_football_elo:
+    type: external_rating_reference
+    purpose: national_team_elo_benchmark
+    required_for: v1_optional
+    raw_dir: data/raw/world_football_elo
+  fifa_ranking:
+    type: official_ranking
+    purpose: official_as_of_rating_feature
+    required_for: v1_optional
+    raw_dir: data/raw/fifa_ranking
+    version_policy: snapshot_date
+  football_data_uk:
+    type: csv_archive
+    purpose: club_results_odds_match_stats
+    required_for: club_extension
+    raw_dir: data/raw/football_data_uk
+  statsbomb_open_data:
+    type: json_event_data
+    purpose: event_xg_style_features
+    required_for: v3_optional
+    raw_dir: data/raw/statsbomb_open_data
+  openfootball_worldcup_json:
+    type: json_fixture_data
+    purpose: worldcup_fixture_simulation
+    required_for: v2
+    raw_dir: data/raw/openfootball_worldcup_json
+    canonical_repository: https://github.com/openfootball/worldcup.json
+    version_policy: required_commit_sha
+    checksum_policy: required_sha256
+    authority: mirror_only_verify_against_fifa
+  fifa_world_cup:
+    type: official_manual_snapshot
+    purpose: fixtures_squads_rules_annex_c
+    required_for: production_world_cup_simulation
+    raw_dir: data/raw/fifa
+    version_policy: publication_date_and_sha256

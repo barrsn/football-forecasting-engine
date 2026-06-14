@@ -1,0 +1,2 @@
+model,split,log_loss,brier,rps,accuracy,calibration_error,sharpness,n_matches
+blend_player_scorer__lightgbm_player_scorer,holdout_2025_2026,0.8169072750025923,0.47979948300374103,0.15678081541608174,0.6200305810397554,0.023586987556760856,0.6046054648900495,1308

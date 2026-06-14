@@ -1,0 +1,69 @@
+# Canonical team-name mapping.
+# Add source-specific aliases here.
+Spain:
+  - Spain
+  - España
+Germany:
+  - Germany
+  - Deutschland
+Netherlands:
+  - Netherlands
+  - Holland
+United States:
+  - United States
+  - USA
+  - U.S.A.
+Turkey:
+  - Türkiye
+Czech Republic:
+  - Czechia
+South Korea:
+  - Korea Republic
+North Korea:
+  - Korea DPR
+Iran:
+  - IR Iran
+Ivory Coast:
+  - Côte d'Ivoire
+China:
+  - China PR
+DR Congo:
+  - Congo DR
+  - Zaire
+Cape Verde:
+  - Cabo Verde
+  - Cape Verde Islands
+Taiwan:
+  - Chinese Taipei
+Hong Kong:
+  - Hong Kong, China
+Brunei:
+  - Brunei Darussalam
+Kyrgyzstan:
+  - Kyrgyz Republic
+United States Virgin Islands:
+  - US Virgin Islands
+Saint Kitts and Nevis:
+  - St. Kitts and Nevis
+  - St Kitts and Nevis
+Saint Lucia:
+  - St. Lucia
+  - St Lucia
+Saint Vincent and the Grenadines:
+  - St. Vincent and the Grenadines
+  - St Vincent and the Grenadines
+  - St. Vincent / Grenadines
+Curaçao:
+  - Curacao
+  - Netherlands Antilles
+North Macedonia:
+  - FYR Macedonia
+São Tomé and Príncipe:
+  - Sao Tome e Principe
+  - São Tomé e Príncipe
+Serbia:
+  - Serbia and Montenegro
+Eswatini:
+  - Swaziland
+Gambia:
+  - The Gambia

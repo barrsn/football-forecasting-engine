@@ -1,0 +1,17 @@
+{
+  "source_path": "data\\raw\\martj42_international_results\\results.csv",
+  "source_version": "c636851f6e388d7aabd1feabbd4dad94e7e6e266",
+  "source_sha256": "50f17eb331a3d8367184f3314cf41616782f842ebb39e42191260b414b56bc78",
+  "start_date": "1990-01-01T00:00:00",
+  "cutoff": "2026-06-11T00:00:00",
+  "input_rows": 49477,
+  "future_or_cutoff_rows": 72,
+  "incomplete_rows": 72,
+  "pre_start_rows": 17118,
+  "semantic_duplicate_rows": 1,
+  "ambiguous_same_day_rows": 34,
+  "output_rows": 32252,
+  "output_min_date": "1990-01-12T00:00:00+00:00",
+  "output_max_date": "2026-06-10T00:00:00+00:00",
+  "unique_teams": 326
+}

@@ -1,0 +1,7 @@
+match_id,group,date,team1,team2
+G1-A-1,A,2026-06-11,Team A1,Team A2
+G1-A-2,A,2026-06-12,Team A3,Team A4
+G1-A-3,A,2026-06-16,Team A1,Team A3
+G1-A-4,A,2026-06-17,Team A2,Team A4
+G1-A-5,A,2026-06-21,Team A1,Team A4
+G1-A-6,A,2026-06-21,Team A2,Team A3

@@ -1,0 +1,39 @@
+{
+  "validation_years": [
+    2018,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "selected_candidate": "compact__c1.0__hl12.0",
+  "selected_feature_set": "compact",
+  "selected_C": 1.0,
+  "selected_half_life_years": 12.0,
+  "feature_counts": {
+    "base": 105,
+    "advanced": 141,
+    "compact": 67
+  },
+  "rolling_metrics": {
+    "log_loss": 0.8767827386582461,
+    "brier": 0.5156411809938711,
+    "rps": 0.17141629774209857,
+    "accuracy": 0.6031716065697564,
+    "calibration_error": 0.01574713953846502
+  },
+  "holdout_metrics": {
+    "model": "rolling_selected",
+    "split": "holdout_2025_2026",
+    "log_loss": 0.8336180940252701,
+    "brier": 0.48954702201731853,
+    "rps": 0.1612069429650845,
+    "accuracy": 0.6100917431192661,
+    "calibration_error": 0.02666454645949524,
+    "sharpness": 0.6079299556975488,
+    "n_matches": 1308
+  },
+  "holdout_best_model": "rolling_selected",
+  "holdout_was_previously_observed": true,
+  "data_cutoff_exclusive": "2026-06-11T00:00:00Z"
+}

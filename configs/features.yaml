@@ -1,0 +1,25 @@
+features:
+  required:
+    - elo_team1_pre
+    - elo_team2_pre
+    - elo_diff_pre
+    - elo_exp_team1
+    - neutral_int
+  rolling_windows: [5, 10]
+  rolling_half_life_days: 365
+  rolling_stats:
+    - goals_for
+    - goals_against
+    - goal_diff
+    - win
+    - draw
+    - opponent_adjusted_goal_diff
+  contextual:
+    - days_rest
+    - tournament_importance
+    - host_team
+    - confederation
+  leakage_policy:
+    rolling_requires_shift: true
+    join_external_data_as_of_date: true
+    forbid_random_split: true

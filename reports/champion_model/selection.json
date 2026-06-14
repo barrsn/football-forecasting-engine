@@ -1,0 +1,65 @@
+{
+  "model": "logistic_fifa_hist_gbm_blend",
+  "promoted": true,
+  "validation_decision": "Log Loss improved by 1.06% without material Brier/RPS degradation",
+  "holdout_decision": "Log Loss improved by 2.07% without material Brier/RPS degradation",
+  "weights": {
+    "logistic_fifa": 0.6785109953795312,
+    "hist_gbm_fifa": 0.32148900462046875
+  },
+  "feature_count": 114,
+  "base_feature_count": 86,
+  "validation_metrics": [
+    {
+      "model": "logistic_fifa_hist_gbm_blend",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.8671190940819486,
+      "brier": 0.5094333353487793,
+      "rps": 0.16852928717809088,
+      "accuracy": 0.6067585425712667,
+      "calibration_error": 0.008976904055921296,
+      "sharpness": 0.6077173999834706,
+      "n_matches": 5297
+    },
+    {
+      "model": "compact_no_fifa_baseline",
+      "split": "pooled_rolling_origin",
+      "log_loss": 0.8763808589805208,
+      "brier": 0.5152818835317156,
+      "rps": 0.1712645325098076,
+      "accuracy": 0.6018501038323579,
+      "calibration_error": 0.01630835048308905,
+      "sharpness": 0.6074590338164391,
+      "n_matches": 5297
+    }
+  ],
+  "holdout_metrics": [
+    {
+      "model": "logistic_fifa_hist_gbm_blend",
+      "split": "holdout_2025_2026",
+      "log_loss": 0.8152702677044296,
+      "brier": 0.47873559398059284,
+      "rps": 0.15630759020279508,
+      "accuracy": 0.6192660550458715,
+      "calibration_error": 0.02537446617336727,
+      "sharpness": 0.6092449848924826,
+      "n_matches": 1308
+    },
+    {
+      "model": "compact_no_fifa_baseline",
+      "split": "holdout_2025_2026",
+      "log_loss": 0.8325325280111127,
+      "brier": 0.4886630873838041,
+      "rps": 0.16089243718775978,
+      "accuracy": 0.6131498470948012,
+      "calibration_error": 0.0278641029258938,
+      "sharpness": 0.6077049214805224,
+      "n_matches": 1308
+    }
+  ],
+  "holdout_was_previously_observed": true,
+  "production_training_rows": 32252,
+  "production_training_cutoff_exclusive": "2026-06-11T00:00:00Z",
+  "model_path": "models\\world_cup_2026_champion.joblib",
+  "model_sha256": "a9aac6e5d7a745c353b5e8b7db88689ff47ce8f29141e918f04098ebe99d1c5f"
+}

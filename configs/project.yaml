@@ -1,0 +1,30 @@
+project:
+  name: football-forecasting-engine
+  target: probabilistic_match_forecasting
+  class_order: [team2_win, draw, team1_win]
+  random_seed: 42
+
+validation:
+  split_type: chronological
+  train_fraction: 0.60
+  validation_fraction: 0.20
+  final_holdout_start: 2025-01-01
+  final_holdout_end: 2026-06-11
+  primary_metrics: [log_loss, brier_score, rps]
+  minimum_log_loss_improvement: 0.01
+  maximum_secondary_degradation: 0.01
+
+models:
+  baselines: [class_prior, elo_logistic, independent_poisson, logistic]
+  score_models: [independent_poisson, dixon_coles]
+  outcome_model: hist_gradient_boosting
+  optional_models: [catboost, lightgbm]
+  calibration: [temperature, sigmoid]
+  isotonic_min_samples: 1000
+
+simulation:
+  n_simulations: 100000
+  max_goals_score_matrix: 7
+  penalty_baseline: 0.50
+  require_official_annex_c: true
+  official_annex_c_path: data/raw/fifa/annex_c_allocations.csv

@@ -1,0 +1,34 @@
+{
+  "selected_candidate": "structured__draw0.3__decisive1.0__hl20.0",
+  "draw_C": 0.3,
+  "decisive_C": 1.0,
+  "half_life_years": 20.0,
+  "feature_count": 86,
+  "rolling_metrics": {
+    "model": "structured__draw0.3__decisive1.0__hl20.0",
+    "split": "pooled_rolling_origin",
+    "log_loss": 0.877890902817552,
+    "brier": 0.5159895798840989,
+    "rps": 0.17143801687995255,
+    "accuracy": 0.603926750991127,
+    "calibration_error": 0.01643177173514833,
+    "sharpness": 0.6053439106295855,
+    "n_matches": 5297,
+    "draw_C": 0.3,
+    "decisive_C": 1.0,
+    "half_life_years": 20.0,
+    "fold_log_loss_std": 0.048064022278904814
+  },
+  "holdout_metrics": {
+    "model": "structured_selected",
+    "split": "holdout_2025_2026",
+    "log_loss": 0.8353486318647009,
+    "brier": 0.49019914125546027,
+    "rps": 0.16127273433676037,
+    "accuracy": 0.613914373088685,
+    "calibration_error": 0.02649067008921996,
+    "sharpness": 0.6074682324020811,
+    "n_matches": 1308
+  },
+  "holdout_was_previously_observed": true
+}

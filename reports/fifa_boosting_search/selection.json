@@ -1,0 +1,32 @@
+{
+  "selected_model": "blend__lightgbm_small__hlNone",
+  "feature_count": 114,
+  "rolling_metrics": {
+    "model": "blend__lightgbm_small__hlNone",
+    "split": "pooled_rolling_origin",
+    "log_loss": 0.8666696421222934,
+    "brier": 0.5092152627391504,
+    "rps": 0.16846896670570918,
+    "accuracy": 0.6071361147819521,
+    "calibration_error": 0.012374381085260738,
+    "sharpness": 0.6057784298473017,
+    "n_matches": 5297,
+    "kind": "blend"
+  },
+  "holdout_metrics": {
+    "model": "blend__lightgbm_small__hlNone",
+    "split": "holdout_2025_2026",
+    "log_loss": 0.8157338226955805,
+    "brier": 0.47895980479376593,
+    "rps": 0.1564224163470503,
+    "accuracy": 0.6207951070336392,
+    "calibration_error": 0.01751834277183572,
+    "sharpness": 0.6072545779959772,
+    "n_matches": 1308
+  },
+  "ensemble_weights": [
+    0.668801474900906,
+    0.331198525099094
+  ],
+  "holdout_was_previously_observed": true
+}

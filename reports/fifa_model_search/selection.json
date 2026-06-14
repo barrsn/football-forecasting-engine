@@ -1,0 +1,42 @@
+{
+  "selected_candidate": "compact_fifa__c3.0__hl20.0",
+  "selected_feature_set": "compact_fifa",
+  "C": 3.0,
+  "half_life_years": 20.0,
+  "feature_counts": {
+    "compact_v2": 91,
+    "compact_fifa": 135
+  },
+  "fifa_feature_count": 49,
+  "fifa_coverage": {
+    "team1": 0.9049051221629666,
+    "team2": 0.9012154285005581
+  },
+  "rolling_metrics": {
+    "model": "compact_fifa__c3.0__hl20.0",
+    "split": "pooled_rolling_origin",
+    "log_loss": 0.8698656594131406,
+    "brier": 0.5111838673112316,
+    "rps": 0.16917360259987763,
+    "accuracy": 0.6052482537285255,
+    "calibration_error": 0.015287069842142498,
+    "sharpness": 0.6093995217886329,
+    "n_matches": 5297,
+    "feature_set": "compact_fifa",
+    "C": 3.0,
+    "half_life_years": 20.0,
+    "fold_log_loss_std": 0.04808976020353709
+  },
+  "holdout_metrics": {
+    "model": "compact_fifa",
+    "split": "holdout_2025_2026",
+    "log_loss": 0.8161376017536595,
+    "brier": 0.4796094456676262,
+    "rps": 0.1564911413305204,
+    "accuracy": 0.6192660550458715,
+    "calibration_error": 0.015925537608285696,
+    "sharpness": 0.6145041920048209,
+    "n_matches": 1308
+  },
+  "holdout_was_previously_observed": true
+}

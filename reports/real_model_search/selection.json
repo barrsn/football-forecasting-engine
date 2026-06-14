@@ -1,0 +1,74 @@
+{
+  "config": {
+    "tuning_start": "2023-01-01",
+    "final_training_end": "2024-01-01",
+    "calibration_end": "2024-07-01",
+    "ensemble_end": "2025-01-01",
+    "test_end": "2026-06-11",
+    "random_state": 42
+  },
+  "feature_count": 75,
+  "split_sizes": {
+    "tuning_train": 28661,
+    "tuning_2023": 1054,
+    "final_train": 29715,
+    "calibration_2024_h1": 588,
+    "ensemble_validation_2024_h2": 641,
+    "holdout_2025_2026": 1308
+  },
+  "best_outcome_candidate": {
+    "name": "logistic_c1.0_hl8.0",
+    "model_type": "logistic",
+    "model_params": {
+      "C": 1.0
+    },
+    "half_life_years": 8.0
+  },
+  "best_score_candidate": {
+    "name": "poisson_a0.03_hl8.0",
+    "model_type": "poisson",
+    "alpha": 0.03,
+    "half_life_years": 8.0
+  },
+  "selected_calibration": "temperature",
+  "ensemble_members": [
+    "elo_logistic",
+    "poisson_a0.03_hl8.0",
+    "logistic_c1.0_hl8.0__temperature"
+  ],
+  "ensemble_weights": {
+    "elo_logistic": 0.0,
+    "poisson_a0.03_hl8.0": 0.18496588680845724,
+    "logistic_c1.0_hl8.0__temperature": 0.8150341131915428
+  },
+  "selected_validation_model": "optimized_ensemble",
+  "selected_validation_metrics": {
+    "model": "optimized_ensemble",
+    "split": "ensemble_validation_2024_h2",
+    "log_loss": 0.9170128905036687,
+    "brier": 0.5408732798374715,
+    "rps": 0.18140519493984444,
+    "accuracy": 0.5756630265210608,
+    "calibration_error": 0.030267123351183554,
+    "sharpness": 0.5751228848469411,
+    "n_matches": 641
+  },
+  "strongest_validation_baseline": "logistic_c1.0_hl8.0__raw",
+  "promotion_validation_pass": false,
+  "promotion_holdout_pass": false,
+  "promoted": false,
+  "deployment_model": "logistic_c1.0_hl8.0__raw",
+  "deployment_reason": "Candidate did not satisfy the promotion thresholds",
+  "deployment_holdout_metrics": {
+    "model": "logistic_c1.0_hl8.0__raw",
+    "split": "holdout_2025_2026",
+    "log_loss": 0.837340836539511,
+    "brier": 0.4913624300901759,
+    "rps": 0.16201045082261317,
+    "accuracy": 0.6100917431192661,
+    "calibration_error": 0.030077931737458652,
+    "sharpness": 0.6102646992963818,
+    "n_matches": 1308
+  },
+  "best_holdout_model_for_reference": "logistic_c1.0_hl8.0__raw"
+}
