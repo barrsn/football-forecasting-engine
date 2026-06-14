@@ -52,13 +52,13 @@ approximate bracket.
 
 ## Local environment
 
-The verified local environment is `trade310`:
+The verified local environment is `python`:
 
 ```powershell
-conda run -n trade310 python -m pytest -q
-conda run -n trade310 ruff check src tests scripts app
-conda run -n trade310 python scripts/run_sample_pipeline.py
-conda run -n trade310 jupyter nbconvert --execute --inplace \
+ python -m pytest -q
+ ruff check src tests scripts app
+ python scripts/run_sample_pipeline.py
+ jupyter nbconvert --execute --inplace \
   notebooks/world_cup_2026_real_models.ipynb
 ```
 
