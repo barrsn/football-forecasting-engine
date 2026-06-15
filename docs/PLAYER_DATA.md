@@ -53,7 +53,7 @@ training data.
 Use `data/templates/player_snapshots.csv` as the import template and run:
 
 ```powershell
-conda run -n trade310 python scripts/ingest_player_snapshots.py PATH_TO_CSV
+python scripts/ingest_player_snapshots.py PATH_TO_CSV
 ```
 
 The generic player snapshot layer is production-ready, but it is not included in
