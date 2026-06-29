@@ -1,0 +1,44 @@
+{
+  "competition": "FIFA World Cup 2026",
+  "source": "data/raw/martj42_international_results/results.csv",
+  "fixture_rows": 72,
+  "groups": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "min_date": "2026-06-11T00:00:00+00:00",
+  "max_date": "2026-06-27T00:00:00+00:00",
+  "results_available": 72,
+  "results_missing": 0,
+  "as_of_date": "2026-06-29",
+  "status_counts": {
+    "completed": 72
+  },
+  "actual_results_path": "data\\interim\\world_cup_2026_results_current.csv",
+  "actual_results_source_url": "https://www.sbnation.com/soccer/1117513/world-cup-schedule-2026-how-to-watch-every-match-scores-and-more",
+  "prediction_results": {
+    "completed_matches": 72,
+    "prediction_accuracy": 0.5972222222222222,
+    "high_confidence_completed": 26,
+    "high_confidence_accuracy": 0.6923076923076923,
+    "correct_predictions": 43,
+    "wrong_predictions": 29,
+    "high_confidence_correct": 18,
+    "high_confidence_wrong": 8
+  },
+  "model": "logistic_fifa_hist_gbm_blend",
+  "model_path": "models\\world_cup_2026_champion.joblib",
+  "confidence_threshold": 0.65,
+  "high_confidence_picks": 26,
+  "note": "Fixture predictions are generated from a pre-tournament/current local feature snapshot. Actual group-stage scores are joined from the current results snapshot when available. Official knockout simulation is not inferred without an official complete bracket input."
+}
