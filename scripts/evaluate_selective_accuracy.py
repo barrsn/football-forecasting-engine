@@ -20,6 +20,7 @@ from football_forecast.evaluation.selective import (
 PROBABILITY_COLUMNS = ["p_team2_win", "p_draw", "p_team1_win"]
 LOGISTIC_WEIGHT = 0.6785109953795312
 HIST_GBM_WEIGHT = 0.32148900462046875
+TARGET_SELECTIVE_ACCURACY = 0.75
 
 
 def _champion_validation_predictions() -> tuple[pd.DataFrame, np.ndarray]:
@@ -65,7 +66,7 @@ def main() -> None:
         validation["outcome"].to_numpy(),
         validation_probabilities,
         validation["year"].to_numpy(),
-        target_accuracy=0.65,
+        target_accuracy=TARGET_SELECTIVE_ACCURACY,
         min_group_predictions=100,
     )
 
@@ -127,7 +128,7 @@ def main() -> None:
     selection = {
         "policy": "high_confidence_hard_pick_with_abstention",
         "threshold": threshold,
-        "target_accuracy": 0.65,
+        "target_accuracy": TARGET_SELECTIVE_ACCURACY,
         "selection_data": "rolling validation only",
         "probabilities_unchanged": True,
         "validation": {

@@ -11,7 +11,7 @@ sample:
 	python scripts/run_sample_pipeline.py
 
 lint:
-	ruff check src tests scripts
+	ruff check src tests scripts app
 
 quality: lint test sample
 

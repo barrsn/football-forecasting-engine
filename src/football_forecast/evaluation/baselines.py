@@ -8,6 +8,11 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 
 from football_forecast.evaluation.metrics import normalize_probabilities
+from football_forecast.models.sklearn_config import (
+    LOGISTIC_MAX_ITER,
+    LOGISTIC_SOLVER,
+    predict_logistic_pipeline_proba,
+)
 
 
 class ClassPriorBaseline:
@@ -37,9 +42,9 @@ class EloLogisticBaseline:
                     "model",
                     LogisticRegression(
                         C=1.0,
-                        max_iter=2000,
+                        max_iter=LOGISTIC_MAX_ITER,
                         random_state=random_state,
-                        solver="lbfgs",
+                        solver=LOGISTIC_SOLVER,
                     ),
                 ),
             ]
@@ -52,8 +57,7 @@ class EloLogisticBaseline:
         return self
 
     def predict_proba(self, frame: pd.DataFrame) -> np.ndarray:
-        raw = self.model.predict_proba(frame[self.columns_])
-        classes = self.model[-1].classes_
+        raw, classes = predict_logistic_pipeline_proba(self.model, frame[self.columns_])
         out = np.zeros((len(frame), 3), dtype=float)
         for index, klass in enumerate(classes):
             out[:, int(klass)] = raw[:, index]
