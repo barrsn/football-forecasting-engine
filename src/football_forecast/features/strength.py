@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from bisect import insort
+from bisect import bisect_left, insort
 from dataclasses import dataclass
 from math import exp, log
 
@@ -219,12 +219,12 @@ def add_prior_match_counts(matches: pd.DataFrame) -> pd.DataFrame:
     long["available"] = pd.to_datetime(long["available"], utc=True)
     rows: list[dict[str, object]] = []
     for _, team_rows in long.groupby("team", sort=False):
-        available_history: list[int] = []
+        available_history: list[pd.Timestamp] = []
         for current_time, batch in team_rows.sort_values(
                 ["kickoff", "row_id"]
         ).groupby("kickoff", sort=True):
-            cutoff = int(current_time.value)
-            prior_count = int(np.searchsorted(available_history, cutoff, side="left"))
+            cutoff = pd.Timestamp(current_time)
+            prior_count = bisect_left(available_history, cutoff)
             for row in batch.itertuples(index=False):
                 rows.append(
                     {
@@ -233,8 +233,8 @@ def add_prior_match_counts(matches: pd.DataFrame) -> pd.DataFrame:
                         "prior_match_count": prior_count,
                     }
                 )
-            for value in batch["available"].astype("int64"):
-                insort(available_history, int(value))
+            for value in batch["available"]:
+                insort(available_history, pd.Timestamp(value))
 
     counts = pd.DataFrame(rows)
     team1 = (
