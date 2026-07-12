@@ -101,15 +101,15 @@ Promotion checks:
 
 The probability model still scores every match. A separate hard-pick policy
 uses a confidence threshold selected only from rolling validation and abstains
-when `max(probability) < 0.50`.
+when `max(probability) < 0.65`.
 
 | Split | Selected accuracy | Coverage | Full accuracy |
 |---|---:|---:|---:|
-| Rolling validation | 69.55% | 66.02% | 60.68% |
-| Holdout 2025-2026 | 73.19% | 65.60% | 61.93% |
+| Rolling validation | 78.55% | 38.91% | 60.68% |
+| Holdout 2025-2026 | 83.71% | 40.37% | 61.93% |
 
-The minimum selected accuracy in any validation year was 65.07%. Accuracy above
-65% therefore applies to high-confidence hard picks, not to all matches. Log
+The minimum selected accuracy in any validation year was 75.23%. Accuracy above
+75% therefore applies to high-confidence hard picks, not to all matches. Log
 Loss, Brier, RPS, and tournament simulation continue to use the unchanged
 probabilities for every match.
 

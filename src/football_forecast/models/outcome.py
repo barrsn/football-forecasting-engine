@@ -10,6 +10,11 @@ from sklearn.preprocessing import StandardScaler
 
 from football_forecast.evaluation.metrics import normalize_probabilities
 from football_forecast.evaluation.probabilities import probability_frame
+from football_forecast.models.sklearn_config import (
+    LOGISTIC_MAX_ITER,
+    LOGISTIC_SOLVER,
+    predict_logistic_pipeline_proba,
+)
 
 
 class OutcomeModel:
@@ -31,10 +36,10 @@ class OutcomeModel:
         if model_type == "logistic":
             defaults = {
                 "C": 1.0,
-                "max_iter": 2000,
+                "max_iter": LOGISTIC_MAX_ITER,
                 "class_weight": None,
                 "random_state": random_state,
-                "solver": "lbfgs",
+                "solver": LOGISTIC_SOLVER,
             }
             defaults.update(params)
             self.model = Pipeline(
@@ -136,8 +141,11 @@ class OutcomeModel:
         return self
 
     def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
-        raw = self.model.predict_proba(X)
-        classes = list(self.model.classes_) if hasattr(self.model, "classes_") else list(self.model[-1].classes_)
+        if self.model_type == "logistic":
+            raw, classes = predict_logistic_pipeline_proba(self.model, X)
+        else:
+            raw = self.model.predict_proba(X)
+            classes = list(self.model[-1].classes_)
         out = np.zeros((len(X), 3), dtype=float)
         for idx, klass in enumerate(classes):
             out[:, int(klass)] = raw[:, idx]
@@ -170,9 +178,9 @@ class StructuredOutcomeModel:
                     "model",
                     LogisticRegression(
                         C=c_value,
-                        max_iter=2000,
+                        max_iter=LOGISTIC_MAX_ITER,
                         random_state=random_state,
-                        solver="lbfgs",
+                        solver=LOGISTIC_SOLVER,
                     ),
                 ),
             ]
@@ -205,8 +213,13 @@ class StructuredOutcomeModel:
         return self
 
     def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
-        draw = self.draw_model.predict_proba(X)[:, 1]
-        team1_given_decisive = self.decisive_model.predict_proba(X)[:, 1]
+        draw_raw, draw_classes = predict_logistic_pipeline_proba(self.draw_model, X)
+        draw = draw_raw[:, list(draw_classes).index(1)]
+        decisive_raw, decisive_classes = predict_logistic_pipeline_proba(
+            self.decisive_model,
+            X,
+        )
+        team1_given_decisive = decisive_raw[:, list(decisive_classes).index(1)]
         decisive = 1.0 - draw
         probabilities = np.column_stack(
             [

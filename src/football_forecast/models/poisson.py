@@ -4,13 +4,75 @@ import numpy as np
 import pandas as pd
 from scipy.stats import poisson
 from scipy.optimize import minimize_scalar
+from sklearn.base import BaseEstimator, RegressorMixin
 from sklearn.impute import SimpleImputer
-from sklearn.linear_model import PoissonRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from football_forecast.evaluation.metrics import normalize_probabilities
 from football_forecast.evaluation.probabilities import probability_frame
+
+
+class StablePoissonRegressor(BaseEstimator, RegressorMixin):
+    """Small Poisson GLM trained without scipy/sklearn GLM optimizers."""
+
+    def __init__(
+        self,
+        alpha: float = 0.1,
+        max_iter: int = 120,
+        learning_rate: float = 0.03,
+        tol: float = 1e-6,
+    ) -> None:
+        self.alpha = alpha
+        self.max_iter = max_iter
+        self.learning_rate = learning_rate
+        self.tol = tol
+
+    def fit(
+        self,
+        X: np.ndarray,
+        y: np.ndarray,
+        sample_weight: np.ndarray | None = None,
+    ) -> "StablePoissonRegressor":
+        values = np.asarray(X, dtype=float)
+        target = np.asarray(y, dtype=float)
+        weights = (
+            np.ones(len(target), dtype=float)
+            if sample_weight is None
+            else np.asarray(sample_weight, dtype=float)
+        )
+        weights = weights / weights.mean()
+        n_features = values.shape[1]
+        coef = np.zeros(n_features, dtype=float)
+        intercept = float(np.log(np.clip(np.average(target, weights=weights), 0.05, None)))
+        previous_loss = float("inf")
+        for _ in range(self.max_iter):
+            linear = np.sum(values * coef, axis=1) + intercept
+            linear = np.clip(linear, -6.0, 3.0)
+            expected = np.exp(linear)
+            residual = (expected - target) * weights
+            grad_intercept = float(residual.mean())
+            grad_coef = np.mean(values * residual[:, None], axis=0) + self.alpha * coef
+            step = self.learning_rate
+            coef_next = coef - step * grad_coef
+            intercept_next = intercept - step * grad_intercept
+            loss = float(
+                np.mean(weights * (expected - target * linear))
+                + 0.5 * self.alpha * np.sum(coef * coef)
+            )
+            coef = coef_next
+            intercept = intercept_next
+            if abs(previous_loss - loss) < self.tol:
+                break
+            previous_loss = loss
+        self.coef_ = coef
+        self.intercept_ = intercept
+        return self
+
+    def predict(self, X: np.ndarray) -> np.ndarray:
+        values = np.asarray(X, dtype=float)
+        linear = np.sum(values * self.coef_, axis=1) + self.intercept_
+        return np.exp(np.clip(linear, -6.0, 3.0))
 
 
 class TwoPoissonScoreModel:
@@ -20,7 +82,7 @@ class TwoPoissonScoreModel:
     bivariate/Dixon-Coles extensions can be added later.
     """
 
-    def __init__(self, alpha: float = 0.1, max_iter: int = 200):
+    def __init__(self, alpha: float = 0.1, max_iter: int = 120):
         self.alpha = alpha
         self.max_iter = max_iter
         self.model_team1 = Pipeline(
@@ -29,10 +91,9 @@ class TwoPoissonScoreModel:
                 ("scaler", StandardScaler()),
                 (
                     "model",
-                    PoissonRegressor(
+                    StablePoissonRegressor(
                         alpha=alpha,
                         max_iter=max_iter,
-                        solver="newton-cholesky",
                     ),
                 ),
             ]
@@ -43,10 +104,9 @@ class TwoPoissonScoreModel:
                 ("scaler", StandardScaler()),
                 (
                     "model",
-                    PoissonRegressor(
+                    StablePoissonRegressor(
                         alpha=alpha,
                         max_iter=max_iter,
-                        solver="newton-cholesky",
                     ),
                 ),
             ]
